@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useEffect, useState } from 'react';
+import CarProfile from './components/CarProfile'; 
+import { data } from './module-data.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [cars, setCars] = useState([]);
+
+    useEffect(() => {
+        setCars(data); 
+    }, []);
+
+    return (
+        <div className="app">
+            <h1>Profile Samochodów</h1>
+            {cars.map(car => (
+                <CarProfile key={car.id} car={car} />
+            ))}
+        </div>
+    );
+};
 
 export default App;

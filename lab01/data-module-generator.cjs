@@ -45,20 +45,14 @@ fs.readFile('./car-brands.txt', 'utf8', (err, data) => {
             let content = "export const data = [";
             
             for (let i = 0; i < count; i++) {
-                const randomName = names[Math.floor(Math.random() * names.length)]; // Losowanie imienia
                 const randomCarBrand = carBrands[Math.floor(Math.random() * carBrands.length)];
-                const randomBookTitle = bookTitles[Math.floor(Math.random() * bookTitles.length)];
                 const id = i + 1; // Generowanie unikalnego id
-                const birthDate = randomDate(new Date(1950, 0, 1), new Date(2003, 11, 31)).toISOString().split('T')[0]; // Losowa data urodzenia
                 const licensePlate = randomLicensePlate(); // Losowy numer rejestracyjny
 
                 // Dodawanie obiektu do zawartości
                 content += `{
                     id: ${id},
                     carBrand: "${randomCarBrand}",
-                    bookTitle: "${randomBookTitle}",
-                    birth: "${birthDate}",
-                    name: "${randomName}",
                     licensePlate: "${licensePlate}"
                 },`;
             }
@@ -66,7 +60,7 @@ fs.readFile('./car-brands.txt', 'utf8', (err, data) => {
             content += "];"
             
             // Zapis łańcucha do pliku 
-            fs.writeFile('module-data.js', content, (err) => {
+            fs.writeFile('./src/module-data.js', content, (err) => {
                 if (err) {
                     console.error(err);
                 }

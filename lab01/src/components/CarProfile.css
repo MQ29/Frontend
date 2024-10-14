@@ -1,0 +1,18 @@
+.car-profile {
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 16px; 
+    margin: 10px; 
+    background-color: #f9f9f9; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s; 
+}
+
+.car-profile:hover {
+    transform: scale(1.02); 
+}
+
+.car-brand {
+    color: #2c3e50; 
+    font-weight: bold; 
+}
