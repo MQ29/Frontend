@@ -1,16 +1,20 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useReducer } from 'react';
+import AppReducer from '../data/AppReducer';
 
 function FlexContainer({ element: Element, data }) {
+  const [items, dispatch] = useReducer(AppReducer, data);
+
   return (
     <div className="d-flex flex-wrap">
-    {data.map((item, index) => (
-      <div key={index} className="col-12 col-md-6 col-lg-4 mb-4">
-        <Element {...item} />
-      </div>
-    ))}
-  </div>
-  )
+      {items.map(item => (
+        <Element
+          key={item.id}
+          {...item}
+          dispatch={dispatch}
+        />
+      ))}
+    </div>
+  );
 }
 
-export default FlexContainer
+export default FlexContainer;
